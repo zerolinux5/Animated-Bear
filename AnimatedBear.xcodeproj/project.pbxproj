@@ -24,6 +24,7 @@
 		EABC95CB19635D5A004CA4C2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EABC95A619635D5A004CA4C2 /* UIKit.framework */; };
 		EABC95D319635D5A004CA4C2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABC95D119635D5A004CA4C2 /* InfoPlist.strings */; };
 		EABC95D519635D5A004CA4C2 /* AnimatedBearTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EABC95D419635D5A004CA4C2 /* AnimatedBearTests.m */; };
+		EABC95F219635E1B004CA4C2 /* BearImages.atlas in Resources */ = {isa = PBXBuildFile; fileRef = EABC95DF19635E1B004CA4C2 /* BearImages.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		EABC95D019635D5A004CA4C2 /* AnimatedBearTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AnimatedBearTests-Info.plist"; sourceTree = "<group>"; };
 		EABC95D219635D5A004CA4C2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EABC95D419635D5A004CA4C2 /* AnimatedBearTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnimatedBearTests.m; sourceTree = "<group>"; };
+		EABC95DF19635E1B004CA4C2 /* BearImages.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BearImages.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 		EABC95AA19635D5A004CA4C2 /* AnimatedBear */ = {
 			isa = PBXGroup;
 			children = (
+				EABC95DE19635E1B004CA4C2 /* BearImages */,
 				EABC95B319635D5A004CA4C2 /* AppDelegate.h */,
 				EABC95B419635D5A004CA4C2 /* AppDelegate.m */,
 				EABC95B619635D5A004CA4C2 /* Main.storyboard */,
@@ -162,6 +165,14 @@
 				EABC95D119635D5A004CA4C2 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EABC95DE19635E1B004CA4C2 /* BearImages */ = {
+			isa = PBXGroup;
+			children = (
+				EABC95DF19635E1B004CA4C2 /* BearImages.atlas */,
+			);
+			path = BearImages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,6 +253,7 @@
 			files = (
 				EABC95AF19635D5A004CA4C2 /* InfoPlist.strings in Resources */,
 				EABC95C219635D5A004CA4C2 /* Images.xcassets in Resources */,
+				EABC95F219635E1B004CA4C2 /* BearImages.atlas in Resources */,
 				EABC95C019635D5A004CA4C2 /* Spaceship.png in Resources */,
 				EABC95B819635D5A004CA4C2 /* Main.storyboard in Resources */,
 			);
