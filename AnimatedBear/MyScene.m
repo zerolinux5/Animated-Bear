@@ -39,7 +39,7 @@
         _bear = [SKSpriteNode spriteNodeWithTexture:temp];
         _bear.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
         [self addChild:_bear];
-        [self walkingBear];
+        //[self walkingBear];
         
     }
     return self;
@@ -62,7 +62,7 @@
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    
+    /*
     CGPoint location = [[touches anyObject] locationInNode:self];
     CGFloat multiplierForDirection;
     
@@ -76,10 +76,51 @@
     
     _bear.xScale = fabs(_bear.xScale) * multiplierForDirection;
     [self walkingBear];
+     */
+    
+    CGPoint location = [[touches anyObject] locationInNode:self];
+    CGFloat multiplierForDirection;
+    CGSize screenSize = self.frame.size;
+    float bearVelocity = screenSize.width / 3.0;
+    CGPoint moveDifference = CGPointMake(location.x - _bear.position.x, location.y - _bear.position.y);
+    float distanceToMove = sqrtf(moveDifference.x * moveDifference.x + moveDifference.y * moveDifference.y);
+    float moveDuration = distanceToMove / bearVelocity;
+    if (moveDifference.x < 0) {
+        multiplierForDirection = 1;
+    } else {
+        multiplierForDirection = -1;
+    }
+    _bear.xScale = fabs(_bear.xScale) * multiplierForDirection;
+    
+    if ([_bear actionForKey:@"bearMoving"]) {
+        //stop just the moving to a new location, but leave the walking legs movement running
+        [_bear removeActionForKey:@"bearMoving"];
+    } //1
+    
+    if (![_bear actionForKey:@"walkingInPlaceBear"]) {
+        //if legs are not moving go ahead and start them
+        [self walkingBear];  //start the bear walking
+    } //2
+    
+    SKAction *moveAction = [SKAction moveTo:location duration:moveDuration];  //3
+    SKAction *doneAction = [SKAction runBlock:(dispatch_block_t)^() {
+        NSLog(@"Animation Completed");
+        [self bearMoveEnded];
+    }]; //4
+    
+    SKAction *moveActionWithDone = [SKAction sequence:@[moveAction,doneAction]]; //5
+    
+    [_bear runAction:moveActionWithDone withKey:@"bearMoving"]; //6
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {    
 }
+
+-(void)bearMoveEnded
+{
+    [_bear removeAllActions];
+}
+
 
 @end
