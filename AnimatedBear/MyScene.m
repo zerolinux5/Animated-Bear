@@ -60,4 +60,26 @@
     /* Called before each frame is rendered */
 }
 
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    
+    CGPoint location = [[touches anyObject] locationInNode:self];
+    CGFloat multiplierForDirection;
+    
+    if (location.x <= CGRectGetMidX(self.frame)) {
+        //walk left
+        multiplierForDirection = 1;
+    } else {
+        //walk right
+        multiplierForDirection = -1;
+    }
+    
+    _bear.xScale = fabs(_bear.xScale) * multiplierForDirection;
+    [self walkingBear];
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{    
+}
+
 @end
